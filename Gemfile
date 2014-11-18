@@ -20,3 +20,5 @@ group :test do
 	gem 'capybara'
 	gem 'database_cleaner'
 end
+
+gem 'clearance'
