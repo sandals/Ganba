@@ -7,22 +7,29 @@
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
+		<div class="container">
+			<!-- Sidebar Navigation and Options -->
+			<nav class="navigation sidebar">
+				<h1>Ganba</h1>
 
-		<h1>Ganba</h1>
+				<% if signed_in? %>
+					Signed in as: <%= current_user.email %>
+					<%= button_to 'Sign out', sign_out_path, method: :delete %>
+				<% else %>
+					<%= link_to 'Sign in', sign_in_path %>
+				<% end %>
+			</nav>
 
-		<% if signed_in? %>
-			Signed in as: <%= current_user.email %>
-			<%= button_to 'Sign out', sign_out_path, method: :delete %>
-		<% else %>
-			<%= link_to 'Sign in', sign_in_path %>
-		<% end %>
+			<!-- Main Page Content -->
+			<section>
+				<div id="flash">
+					<% flash.each do |key, value| %>
+						<div class="flash <%= key %>"><%= value %></div>
+					<% end %>
+				</div>
 
-		<div id="flash">
-			<% flash.each do |key, value| %>
-				<div class="flash <%= key %>"><%= value %></div>
-			<% end %>
+				<%= yield %>
+			</section>
 		</div>
-		<%= yield %>
-
 	</body>
 </html>

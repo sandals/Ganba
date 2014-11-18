@@ -22,3 +22,6 @@ group :test do
 end
 
 gem 'clearance'
+
+gem 'bootstrap-sass', '~> 3.3.1'
+gem 'autoprefixer-rails'
