@@ -4,7 +4,7 @@ feature "Guest views homepage" do
 	scenario "homepage displays application title" do
 		visit root_path
 
-		expect(page).to have_css 'h1', text: 'Ganba'
+		expect(page).to have_css 'h1', text: 'Hello!'
 	end
 
 	scenario "homepage displays correct title" do

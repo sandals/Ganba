@@ -1,35 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<title>Ganba Flashcards!</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
-		<div class="container">
-			<!-- Sidebar Navigation and Options -->
-			<nav class="navigation sidebar">
-				<h1>Ganba</h1>
-
-				<% if signed_in? %>
-					Signed in as: <%= current_user.email %>
-					<%= button_to 'Sign out', sign_out_path, method: :delete %>
-				<% else %>
-					<%= link_to 'Sign in', sign_in_path %>
-				<% end %>
-			</nav>
-
-			<!-- Main Page Content -->
-			<section>
-				<div id="flash">
-					<% flash.each do |key, value| %>
-						<div class="flash <%= key %>"><%= value %></div>
-					<% end %>
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapsable-content">
+						<span class="sr-only">Toggle Navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<%= link_to "がんば", root_path, class: "navbar-brand" %>
 				</div>
 
+				<div class="collapse navbar-collapse" id="navbar-collapsable-content">
+					<ul class="nav navbar-nav navbar-right">
+						<% if signed_in? %>
+							<li><%= link_to current_user.email, '#' %></li>
+							<li><%= link_to 'Sign out', sign_out_path, method: :delete %>
+						<% else %>
+							<li><%= link_to 'Sign in', sign_in_path %></li>
+						<% end %>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<div class="row">
+				<div id="flash">
+					<% flash.each do |key, value| %>
+						<div class="flash <%= key %>"><p><%= value %></p></div>
+					<% end %>
+				</div>
+			</div>
+			<div class="row">
 				<%= yield %>
-			</section>
+			</div>
 		</div>
 	</body>
 </html>

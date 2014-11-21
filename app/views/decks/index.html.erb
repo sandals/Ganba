@@ -1,0 +1,12 @@
+<h1>Decks</h1>
+<%= link_to "Create Deck", new_deck_path %>
+
+<div class="decks">
+	<% if @decks.count > 1 %>
+		<ul>
+			<%= render @decks %>
+		</ul>
+	<% else %>
+		<p>You haven't created any decks yet!</p>
+	<% end %>
+</div>
