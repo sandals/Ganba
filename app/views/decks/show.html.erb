@@ -1,1 +1,8 @@
 <h1><%= @deck.name %></h1>
+<%= link_to "Create card", new_deck_card_path(@deck) %>
+
+<div class="cards">
+<% @deck.cards.each do |card| %>
+	<li><%= card.front %></li>
+<% end %>
+</div>
