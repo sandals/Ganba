@@ -1,0 +1,9 @@
+<h1><%= @card.front %></h1>
+
+<%= form_for [@deck, @card] do |form| %>
+	<div>
+		<%= form.label :back %>
+		<%= form.text_field :back, value: "" %>
+	</div>
+	<%= form.submit "Answer" %>
+<% end %>

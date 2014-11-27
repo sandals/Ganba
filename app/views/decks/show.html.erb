@@ -3,6 +3,6 @@
 
 <div class="cards">
 <% @deck.cards.each do |card| %>
-	<li><%= card.front %></li>
+	<li><%= link_to card.front, [@deck, card] %></li>
 <% end %>
 </div>
